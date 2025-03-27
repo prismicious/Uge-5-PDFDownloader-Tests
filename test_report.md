@@ -5,6 +5,11 @@ This report summarizes the testing process and results for the **PDF Downloader*
 
 ---
 
+## Discrepancies
+During the testing process, it was noted that the `execute_parallel_downloads` method was not explicitly tested. This method encapsulates the logic for parallel execution using `ThreadPoolExecutor`. While its functionality is indirectly validated through the integration tests, direct unit tests for this method would ensure better coverage and help identify potential concurrency issues or edge cases.
+
+---
+
 ## Test Cases
 
 ### 1. `is_valid_pdf` Function
