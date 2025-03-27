@@ -7,13 +7,12 @@ from scripts.download_files import download_task, return_df
 project_root = Path(__file__).resolve().parent.parent
 test_output_dir = project_root / "tests" / "test_output"
 test_output_dir.mkdir(parents=True, exist_ok=True)
-
+id = "BRnum"
 
 class TestDownloadTaskIntegration(unittest.TestCase):
     def setUp(self):
         """Set up the test environment and initialize the dataframe."""
-        self.id = "BRnum"
-        self.df = return_df(self.id)
+        self.df = return_df(id)
 
         # Ensure dataframe is valid
         self.assertIsNotNone(self.df, "return_df() returned None!")
