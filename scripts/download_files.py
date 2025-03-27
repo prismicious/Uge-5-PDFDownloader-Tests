@@ -65,9 +65,11 @@ def download_pdf(url, save_path, retries=3, timeout=10):
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response, open(save_path, 'wb') as out_file:
                 shutil.copyfileobj(response, out_file)
-            print(f"Download successful: {save_path}")
-            return "Yes, valid PDF" if is_valid_pdf(save_path) else "Yes, but file error (corrupt PDF)"
-        except (urllib.error.URLError, socket.timeout, Exception) as err:
+            is_valid = is_valid_pdf(save_path)
+            print(f"Validation Result for {save_path}: {is_valid}") 
+            # I need to see this print statement in the logs
+            return "Yes, valid PDF" if is_valid else "No, Invalid PDF"
+        except (urllib.error.URLError, socket.timeout, Exception, OSError) as err:
             e = err  # Store the error for reporting
             print(
                 f"Download error (Attempt {attempt + 1}/{retries}): {url} - {e}")
@@ -130,7 +132,10 @@ def download_task(j, df, dwn_pth=dwn_path):
             return j, "No, because second URL failed"
 
     print(f"Saving file to: {savefile}")
-    return j, status  # Return ID and status
+    
+    # Add error handling for no status
+    
+    return j, status if status else "No, Unknown Error"
 
 # -------------------- PARALLEL DOWNLOAD EXECUTION --------------------
 

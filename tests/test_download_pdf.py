@@ -5,13 +5,15 @@ from unittest.mock import MagicMock, patch
 from urllib.error import HTTPError
 from scripts.download_files import download_pdf
 
+
 class TestDownloadPDF(unittest.TestCase):
     def setUp(self) -> None:
         # Patch shared dependencies
         self.patcher_urlopen = patch("urllib.request.urlopen")
         self.patcher_copyfileobj = patch("shutil.copyfileobj")
         self.patcher_open = patch("builtins.open", new_callable=MagicMock)
-        self.patcher_is_valid_pdf = patch("scripts.download_files.is_valid_pdf")
+        self.patcher_is_valid_pdf = patch(
+            "scripts.download_files.is_valid_pdf")
 
         # Start patches
         self.mock_urlopen = self.patcher_urlopen.start()
@@ -55,23 +57,26 @@ class TestDownloadPDF(unittest.TestCase):
         # Assert
         self.assertEqual(result, "Yes, valid PDF")
         self.mock_urlopen.assert_called_once()
-        self.mock_copyfileobj.assert_called_once_with(self.mock_response, self.mock_open.return_value.__enter__.return_value)
+        self.mock_copyfileobj.assert_called_once_with(
+            self.mock_response, self.mock_open.return_value.__enter__.return_value)
         self.mock_is_valid_pdf.assert_called_once_with(save_path)
 
     def test_corrupt_pdf_download(self) -> None:
         # Arrange
         url: str = "http://corrupted.pdf"
         save_path: str = "output/downloads/corrupt_pdf.pdf"
-        self.mock_response.read.return_value = b"This is not valid PDF content"  # Simulate corrupt PDF content
+        # Simulate corrupt PDF content
+        self.mock_response.read.return_value = b"This is not valid PDF content"
         self.mock_is_valid_pdf.return_value = False
 
         # Act
         result: str = download_pdf(url, save_path)
 
         # Assert
-        self.assertEqual(result, "Yes, but file error (corrupt PDF)")
+        self.assertEqual(result, "No, Invalid PDF")
         self.mock_urlopen.assert_called_once()
-        self.mock_copyfileobj.assert_called_once_with(self.mock_response, self.mock_open.return_value.__enter__.return_value)
+        self.mock_copyfileobj.assert_called_once_with(
+            self.mock_response, self.mock_open.return_value.__enter__.return_value)
         self.mock_is_valid_pdf.assert_called_once_with(save_path)
 
     def test_unsuccessful_download(self) -> None:
@@ -80,7 +85,8 @@ class TestDownloadPDF(unittest.TestCase):
         save_path: str = f"output/downloads/unsuccessful_download.pdf"
 
         # Mock the request and response
-        self.mock_urlopen.side_effect = HTTPError(url, 404, "Not Found", None, None)
+        self.mock_urlopen.side_effect = HTTPError(
+            url, 404, "Not Found", None, None)
 
         # Act
         result: str = download_pdf(url, save_path)
@@ -123,6 +129,3 @@ class TestDownloadPDF(unittest.TestCase):
 
         # Ensure urlopen is not called
         self.mock_urlopen.assert_not_called()
-
-if __name__ == '__main__':
-    unittest.main()

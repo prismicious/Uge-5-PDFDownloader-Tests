@@ -1,58 +1,54 @@
-# PDF Downloader
+# PDF Downloader Test Suite
 
-This script automates the process of downloading PDF files from a list of URLs, checking the validity of the downloaded PDFs, and updating a metadata file with the download status.
+This project is focused on adding a comprehensive test suite for the PDF Downloader application. The goal is to ensure the reliability, correctness, and robustness of the PDF Downloader by implementing various automated tests.
 
-## Description
+## Features
 
-This project provides a Python script to download PDFs from a list of URLs in an Excel file. The script checks each PDF's validity by attempting to read its pages and marks the download status accordingly. If any errors are encountered, the script retries the download two times before marking it as failed. The script also updates a metadata file with the download status for each entry.
+- Unit tests for individual components of the PDF Downloader.
+- Integration tests to verify the interaction between components.
+- End-to-end tests to simulate real-world usage scenarios.
+
+## Test Details
+
+### Unit Tests
+Unit tests are written to validate the behavior of individual functions:
+- **`is_valid_pdf`**: Ensures that the function correctly identifies valid and invalid PDF files.
+- **`download_pdf`**: Tests the ability to download PDFs, handle errors, and validate the downloaded files.
+
+### Integration Tests
+Integration tests verify the interaction between multiple components:
+- **`download_task`**: Tests the handling of primary and alternative URLs, as well as the integration with the DataFrame and file system.
+
+### Edge Cases
+The test suite includes scenarios for:
+- Missing or invalid URLs.
+- Corrupt or empty PDF files.
+- Network errors such as timeouts and HTTP errors.
+
+### Parallel Execution
+The project supports parallel downloads using `ThreadPoolExecutor`. Tests ensure that this functionality works as expected without race conditions or data corruption.
+
+## Test Report
+
+The test report provides a detailed summary of the testing process and results. It includes information about the test cases, scenarios, and their outcomes. The report ensures transparency and helps identify areas for improvement.
+
+### Key Highlights:
+- **Coverage**: The report covers unit tests, integration tests, and edge cases.
+- **Results**: All test cases have been executed successfully, ensuring the reliability of the application.
+- **Improvements**: The report identifies necessary code changes and enhancements made during testing.
+
+For more details, refer to the [Test Report](test_report.md).
 
 ## Getting Started
 
-### Dependencies
+1. Clone the repository.
+2. Install dependencies using your preferred package manager:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the test suite using the following command:
+   ```bash
+   python -m unittest discover -s tests
+   ```
 
-* pandas
-* PyPDF2
 
-### Installing
-
-* Download or clone the repository containing the script.
-
-### Executing program
-
-* Navigate to the scripts folder where the download_files.py script is located.
-* Run the script with the following command:
-    ```
-    python download_files.py
-    ```
-
-This will start the process of downloading the PDFs. The status of each download will be shown in the terminal, and the metadata file will be updated once all downloads are complete.
-
-### Customization
-
-You can adjust the number of download attempts and tweak other parameters directly in the script to suit your needs. By default, the script processes 20 entries for testing, but you can modify this number as required.
-
-## Possible Improvements:
-* The code could be divided into classes instead:
-    * PDFDownloader
-    * MetadataUpdater
-    * DownloadManager
-
-* The classes could be placed in separate Python files within a utils folder, for example:
-    * downloader.py
-    * validator.py
-    * metadata.py
-    * config.py
-
-* Using requests instead of urllib could improve usability and error handling.
-
-* Implementing logging instead of print() would allow logs to be saved to a file, making debugging easier.
-
-## Author
-
-Dennis Russell
-[@DennisRussell0](https://github.com/DennisRussell0)
-
-## Version History
-
-* 0.1
-    * Initial Release
