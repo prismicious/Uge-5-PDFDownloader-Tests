@@ -12,7 +12,6 @@ id = "BRnum"
 class TestDownloadTaskIntegration(unittest.TestCase):
     def setUp(self):
         """Set up the test environment and initialize the dataframe."""
-        self.id = "BRnum"
         self.df = return_df(self.id)
 
         # Ensure dataframe is valid
