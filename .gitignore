@@ -5,3 +5,4 @@ __pycache__/
 .coverage
 tests/test_output/
 .vscode/PythonImportHelper-v2-Completion.json
+venv/

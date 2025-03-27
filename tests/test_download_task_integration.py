@@ -22,7 +22,7 @@ class TestDownloadTaskIntegration(unittest.TestCase):
         self.output_path = test_output_dir
         self.pdf_path = test_output_dir / "BR50041.pdf"
 
-    def test_download_valid_url(self):
+    def test_download_valid_url(self) -> None:
         """Test downloading a file from a valid URL."""
         
         # Arrange
@@ -38,7 +38,7 @@ class TestDownloadTaskIntegration(unittest.TestCase):
         # Assert
         self.assertEqual(result[1], "Yes, valid PDF")  # Check the status
 
-    def test_download_invalid_url(self):
+    def test_download_invalid_url(self) -> None:
         """Test downloading from an invalid URL."""
 
         # Arrange

@@ -26,7 +26,7 @@ class TestDownloadTask(unittest.TestCase):
         self.patcher_download_pdf.stop()
         self.patcher_copy.stop()
 
-    def test_valid_primary_url(self):
+    def test_valid_primary_url(self) -> None:
         # Arrange
         df = pd.DataFrame({
             "Pdf_URL": ["http://example.com"],
@@ -41,7 +41,7 @@ class TestDownloadTask(unittest.TestCase):
         self.assertEqual(result, ("12345", "Yes, valid PDF"))
         self.mock_download_pdf.assert_called_once_with("http://example.com", unittest.mock.ANY)
     
-    def test_valid_alternative_url(self):
+    def test_valid_alternative_url(self) -> None:
         # Arrange
         df = pd.DataFrame({
             "Pdf_URL": [None],
