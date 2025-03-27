@@ -25,9 +25,6 @@ The test suite includes scenarios for:
 - Corrupt or empty PDF files.
 - Network errors such as timeouts and HTTP errors.
 
-### Parallel Execution
-The project supports parallel downloads using `ThreadPoolExecutor`. Tests ensure that this functionality works as expected without race conditions or data corruption.
-
 ## Test Report
 
 The test report provides a detailed summary of the testing process and results. It includes information about the test cases, scenarios, and their outcomes. The report ensures transparency and helps identify areas for improvement.
