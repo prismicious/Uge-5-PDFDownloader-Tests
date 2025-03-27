@@ -187,7 +187,15 @@ def return_df(id, dwn_pth=dwn_path):
 
     # -------------------- LOAD INPUT DATA --------------------
     # Load the Excel file containing PDF URLs
-    df = pd.read_excel(list_pth, sheet_name=0, index_col=id)
+    try:
+        df = pd.read_excel(list_pth, sheet_name=0, index_col=id)
+    except ValueError:
+        # If `id` is not a valid column, load without `index_col` and set it manually
+        df = pd.read_excel(list_pth, sheet_name=0)
+        if id in df.columns:
+            df.set_index(id, inplace=True)
+        else:
+            raise ValueError(f"Column '{id}' not found in the Excel file.")
 
     # Ensure the URL column is correctly formatted (replace non-string values with None)
     df["Report Html Address"] = df["Report Html Address"].apply(
