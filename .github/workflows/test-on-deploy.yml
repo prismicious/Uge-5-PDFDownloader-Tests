@@ -41,7 +41,8 @@ jobs:
       - name: Update README with coverage
         run: |
           coverage_percent=$(coverage report | grep TOTAL | awk '{print $4}')
-          sed -i "s|<!-- COVERAGE_BADGE -->|![Coverage: $coverage_percent](https://img.shields.io/badge/Coverage-$coverage_percent-green)|" README.md
+          markdown_badge="![Coverage: $coverage_percent](https://img.shields.io/badge/Coverage-$coverage_percent-green)"
+          sed -i "s|<!-- COVERAGE_BADGE -->|$markdown_badge|" README.md
 
       - name: Commit and push changes
         run: |
