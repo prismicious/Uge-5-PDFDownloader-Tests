@@ -3,6 +3,7 @@ __pycache__/
 **/__pycache__/
 *.pyc
 .coverage
+coverage.xml
 tests/test_output/
 .vscode/PythonImportHelper-v2-Completion.json
 venv/
