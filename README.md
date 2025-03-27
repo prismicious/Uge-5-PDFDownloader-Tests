@@ -1,8 +1,9 @@
 # PDF Downloader Test Suite
 
+[![Test on Deploy to Main](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml/badge.svg)](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml)
+
 This project is focused on adding a comprehensive test suite for the PDF Downloader application. The goal is to ensure the reliability, correctness, and robustness of the PDF Downloader by implementing various automated tests.
 
-[![Test on Deploy to Main](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml/badge.svg)](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml)
 ## Features
 
 - Unit tests for individual components of the PDF Downloader.
