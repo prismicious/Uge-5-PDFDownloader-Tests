@@ -34,6 +34,6 @@ jobs:
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
           filename: coverage.xml
-          shield: true
+          badge: true 
           format: markdown
           hide_complexity: true
