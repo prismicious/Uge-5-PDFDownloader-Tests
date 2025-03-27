@@ -1,6 +1,6 @@
 # PDF Downloader Test Suite
 
-[![Test on Deploy to Main](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml/badge.svg)](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml)
+w[![Test on Deploy to Main](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml/badge.svg)](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml)
 
 ![Coverage: 86%](https://img.shields.io/badge/Coverage-86%-green)
 
