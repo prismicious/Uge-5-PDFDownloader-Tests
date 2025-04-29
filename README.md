@@ -1,5 +1,7 @@
 # PDF Downloader Test Suite
 
+OBS: I have ONLY created the tests for this project - It was programmed by another participant at Specialisterne Academy.
+
 [![Test on Deploy to Main](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml/badge.svg)](https://github.com/prismicious/Uge-5-PDFDownloader-Tests/actions/workflows/test-on-deploy.yml)
 
 ![Coverage: 86%](https://img.shields.io/badge/Code%20Coverage-86%25-success?style=flat)
